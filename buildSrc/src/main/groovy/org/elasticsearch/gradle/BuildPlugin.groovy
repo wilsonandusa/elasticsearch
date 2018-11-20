@@ -237,6 +237,7 @@ class BuildPlugin implements Plugin<Project> {
 
     private static String findCompilerJavaHome() {
         final String compilerJavaHome = System.getenv('JAVA_HOME')
+        compilerJavaHome = "/Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home"
         final String compilerJavaProperty = System.getProperty('compiler.java')
         if (compilerJavaProperty != null) {
             compilerJavaHome = findJavaHome(compilerJavaProperty)
@@ -247,7 +248,7 @@ class BuildPlugin implements Plugin<Project> {
                 return Jvm.current().javaHome
             } else {
                 throw new GradleException(
-                        "JAVA_HOME must be set to build Elasticsearch. " +
+                        "JAVA_HOME must be sesssssssst to build Elasticsearch. " +
                                 "Note that if the variable was just set you might have to run `./gradlew --stop` for " +
                                 "it to be picked up. See https://github.com/elastic/elasticsearch/issues/31399 details."
                 )
@@ -259,6 +260,8 @@ class BuildPlugin implements Plugin<Project> {
     private static String findJavaHome(String version) {
         String versionedVarName = getJavaHomeEnvVarName(version)
         String versionedJavaHome = System.getenv(versionedVarName);
+        System.out.println(versionedVarName);
+        System.out.println(versionedJavaHome);
         if (versionedJavaHome == null) {
             throw new GradleException(
                     "$versionedVarName must be set to build Elasticsearch. " +

@@ -48,7 +48,6 @@ import java.util.Set;
  * consumed from the classpath.
  */
 public class ExportElasticsearchBuildResourcesTask extends DefaultTask {
-
     private final Logger logger = Logging.getLogger(ExportElasticsearchBuildResourcesTask.class);
 
     private final Set<String> resources = new HashSet<>();
